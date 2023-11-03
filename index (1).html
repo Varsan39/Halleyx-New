@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="x-icon" href="hal.JFIF">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="indexstyle (1).css">
+    <title>Create WebPage</title>
+</head>
+<body>
+  
+    <div id="left">
+        <center><div style="font-size: 20px;">Form designer</div></center>
+        <button class="curve" onclick="showInputDialog()" style="color: white;"><img src="layout.png"> Layout</button>
+                <div id="input-options">
+                    <div id="input-label">
+                          <label for="rows">Rows:</label>
+                          <input type="number" id="rows">
+                    </div>
+          
+          <div id=input-label>
+                          <label for="columns">Columns:</label>
+                         <input type="number" id="columns">
+          </div>
+           <div id="input-label">
+            <label for="mergedRows">Merged Rows:</label>
+            <input type="number" id="mergedRows">
+        </div>
+        <div id="input-label">
+            <label for="mergedColumns">Merged Columns:</label>
+            <input type="number" id="mergedColumns">
+        </div>
+          <button  class="curve small"onclick="splitContent()" style="color: white;">Ok</button>
+        </div>
+        <button class="curve label-button" style="color: white;" onclick="openModal()"onmouseover="showLabelSettingsIcon()" onmouseout="hideLabelSettingsIcon()"><img src="t-logo.png">Label
+            <div id="settings-icon" class="settings-icon">⚙️</div></button>
+        <button class="curve"draggable="true" style="color: white;" ondragstart="drag(event,'button')"><img src="button.png">Button</button>
+        <button class="curve"draggable="true" style="color: white;" ondragstart="drag(event,'textbox')"><img src="textbox.png">Text box</button>
+        <button class="curve"draggable="true" style="color: white;" ondragstart="drag(event,'dropdown')"ondrop="editDropdownOptions()" ><img src="dropdown.png">Dropdown</button>
+        <button class="curve"draggable="true" style="color: white;" ondragstart="drag(event,'checkbox')"><img src="checkbox.png">Check box</button>
+        <button class="curve"draggable="true" style="color: white;" ondragstart="drag(event,'radio')"><img src="round.png">Radio button</button>
+        <button class="curve" style="color: white;" onclick="openTableModal()"><img src="table.png">Table</button>
+        <button class="curve" style="color: white;" onclick="openNavSettings()" ><img src="navi.png" >Navigation link</button>
+        <button class="curve" style="color: white;" onclick="openImageDialog()"><img src="image.png">Image</button>
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </div>
+    <div id="right">
+        
+        <div id="top">
+            <div id="top-panel">
+                
+                <button class="publish-button" id="publishButton">publish</button>
+                <button class="preview-button" id="previewButton">Preview</button>
+            </div>
+        </div>
+        <span id="Design">Design Mode</span>
+        <div id="content" ondragover="allowDrop(event)" ondrop="drop(event)" contenteditable="true" oninput="onContentChange()">
+        
+        <div id="text-box-container"></div>
+         <div id="navigation-container"></div>
+       </div>
+        </div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()"><b>&times;</b></span>
+        <h3>Settings</h3>
+        <label for="fontSize">Font Size:</label>
+        <input type="number" id="fontSize" placeholder="Font size">
+        <label for="fontStyle">Font Style:</label>
+        <select id="fontStyle">
+            <option value="normal">Normal</option>
+            <option value="bold">Bold</option>
+            <option value="italic">Italic</option>
+            <option value="underline">Underline</option>
+        </select>
+        <label for="fontColor">Font Color:</label>
+        <input type="color" id="fontColor" placeholder="Font color">
+        <button id="applyTextStylesButton" onclick="applyTextStyles()">Apply</button>
+    </div>
+    <div class="modal-overlay" id="modalOverlay"></div>
+</div>
+
+
+<div id="dropdownEditModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDropdownEditModal()">&times;</span>
+        <h3>Edit Dropdown</h3>
+        <label for="numOptions">Number of Options:</label>
+        <input type="number" id="numOptions">
+        <label for="optionValues">Option Values (comma-separated):</label>
+        <input type="text" id="optionValues" placeholder="e.g., Option 1, Option 2, Option 3">
+        <button id="applyDropdownChanges" onclick="applyDropdownChanges()">Apply Changes</button>
+    </div>
+    <div class="modal-overlay" id="modalOverlay"></div>
+</div>
+
+
+<div class="modal" id="navSettingsModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeNavSettings()">&times;</span>
+        <label for="navId">Navigation ID:</label>
+        <input type="text" id="navId">
+        <br>
+        <label for="navLink">Navigation Link:</label>
+        <input type="text" id="navLink">
+        <br>
+        <button onclick="applyNavSettings()">Apply</button>
+    </div>
+</div>
+
+<div class="modal" id="tableModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeTableModal()">&times;</span>
+        <label for="numRows">Number of Rows:</label>
+        <input type="number" id="numRows">
+        <br>
+        <label for="numCols">Number of Columns:</label>
+        <input type="number" id="numCols">
+        <br>
+        <label for="colHeaders">Column Headers (comma-separated):</label>
+        <input type="text" id="colHeaders">
+        <br>
+        <button onclick="createTable()">Create Table</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="leftscript (1).js">
+
+</script>
+</body>
+</html>
